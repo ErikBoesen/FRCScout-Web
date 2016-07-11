@@ -22,6 +22,8 @@ submit.onclick = function() {
 		inputs[input].value = '';
 	}
 
+    data['timestamp'] = new Date().getTime();
+
 	console.log(data); // Debug
 
 	// Send data off to store.php, which will handle
