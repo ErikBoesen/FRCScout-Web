@@ -10,6 +10,7 @@
 <body>
     <?php
         $json = $_POST['json'];
+        echo $json;
 
         // Make sure input is valid JSON (it should be)
         if (json_decode($json) != null) {
@@ -18,8 +19,8 @@
             fclose($file);
         }
         else {
-            // Invalid JSON has been submitted.
-            // This triggers on initial page load, so nothing is here.
+            // Run when invalid JSON has been submitted.
+            // TODO: Look into why this triggers on initial page load.
         }
     ?>
     <input type="number" id="team" placeholder="Team #">
