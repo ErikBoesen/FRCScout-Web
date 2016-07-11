@@ -10,6 +10,7 @@ var inputs = {};
 // Make each element be the value to a key named after its ID.
 for (i = 0; i < tags.length; i++) inputs[tags[i].id] = tags[i];
 
+// Submit data (also clears all fields).
 submit.onclick = function() {
     // Make empty data object
 	var data = {};
@@ -21,13 +22,13 @@ submit.onclick = function() {
 		inputs[input].value = '';
 	}
 
-	console.log(inputs);
-	console.log(data);
+	console.log(data); // Debug
 
-	// Convert data structure to JSON
-	$.post('index.php', {
-		json: JSON.stringify(data)
-	});
+	// Send data off to store.php, which will handle
+    var req = new XMLHttpRequest();
+    req.open('POST', 'store.php');
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    req.send('json=' + JSON.stringify(data));
 };
 
 // Clear all fields without submitting any data.
