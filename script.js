@@ -17,7 +17,8 @@ submit.onclick = function() {
     // Go through each input in the data object and fill in the data from it
 	for (var input in inputs) {
         // Input the values from each <input> into the data object
-        data[input] = inputs[input].value;
+        // Number values will be cast as integers.
+        data[input] = (inputs[input].type === 'number') ? parseInt(inputs[input].value) : inputs[input].value;
         // Clear <input>s to prepare for new inputs after submission
 		inputs[input].value = '';
 	}
